@@ -1,3 +1,27 @@
+const main = () => {
+    const input = data.split("\n").map((i) => parseInt(i.replace("R", "").replace("L", "-")));
+
+    let total = 0;
+    let dial = 50;
+
+    for (let i = 0; i < input.length; i++) {
+        const value = input[i];
+
+        if (dial === 0) {
+            total++;
+        }
+
+        if (value > 0) {
+            dial = (dial + value) % 100;
+        }
+        else if (value < 0) {
+            dial = (dial + value + 100) % 100;
+        }
+    }
+
+    console.log(total);
+}
+
 const data = `R11
 R8
 L47
@@ -4034,24 +4058,4 @@ R44
 L24
 R10`
 
-const input = data.split("\n").map((i) => parseInt(i.replace("R", "").replace("L", "-")));
-
-let total = 0;
-let dial = 50;
-
-for (let i = 0; i < input.length; i++) {
-    const value = input[i];
-
-    if (dial === 0) {
-        total++;
-    }
-
-    if (value > 0) {
-        dial = (dial + value) % 100;
-    }
-    else if (value < 0) {
-        dial = (dial + value + 100) % 100;
-    }
-}
-
-console.log(total);
+main();
