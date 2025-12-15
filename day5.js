@@ -1,3 +1,26 @@
+const main = () => {
+    const fresh = input.split('\n\n')[0].split('\n').map((range) => range.split('-').map((r) => parseInt(r)));
+    const inventory = input.split('\n\n')[1].split('\n').map((item) => parseInt(item));
+
+    let count = 0;
+
+    for (let inventoryIndex = 0; inventoryIndex < inventory.length; inventoryIndex++) {
+        let inventoryItem = inventory[inventoryIndex];
+        let added = false;
+        for (let freshIndex = 0; freshIndex < fresh.length; freshIndex++) {
+            let low = fresh[freshIndex][0];
+            let high = fresh[freshIndex][1];
+
+            if (inventoryItem >= low && inventoryItem <= high && !added) {
+                added = true;
+                count++;
+            }
+        }
+    }
+
+    console.log(count);
+}
+
 const input = `213743501161200-213743501161200
 221359789392478-222960432116258
 553905700373062-561794342755365
@@ -1175,28 +1198,6 @@ const input = `213743501161200-213743501161200
 245110820984873
 404371687077287
 92684280085493
-109303133175033`
+109303133175033`;
 
-const fresh = input.split('\n\n')[0].split('\n').map((range) => range.split('-').map((r) => parseInt(r)));
-
-const inventory = input.split('\n\n')[1].split('\n').map((item) => parseInt(item));
-
-//console.log(fresh);
-
-let count = 0;
-
-for (let inventoryIndex = 0; inventoryIndex < inventory.length; inventoryIndex++) {
-    let inventoryItem = inventory[inventoryIndex];
-    let added = false;
-    for (let freshIndex = 0; freshIndex < fresh.length; freshIndex++) {
-        let low = fresh[freshIndex][0];
-        let high = fresh[freshIndex][1];
-
-        if (inventoryItem >= low && inventoryItem <= high && !added) {
-            added = true;
-            count++;
-        }
-    }
-}
-
-console.log(count);
+main();
