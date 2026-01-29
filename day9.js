@@ -1,3 +1,26 @@
+const main = () => {
+    const data = input.split(('\n')).map((i) => i.split(',')).map((coord) => coord.map((num) => parseInt(num)));
+
+    let largestarea = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        let x1 = data[i][0];
+        let y1 = data[i][1];
+
+        for (let j = 0; j < data.length; j++) {
+            let x2 = data[j][0];
+            let y2 = data[j][1];
+
+            let area = (Math.abs(x1 - x2) + 1) * (Math.abs(y1 - y2) + 1);
+            if (area > largestarea) {
+                largestarea = area;
+            }
+        }
+    }
+
+    console.log(largestarea);
+}
+
 const input = `97813,50305
 97813,51516
 97783,51516
@@ -493,29 +516,6 @@ const input = `97813,50305
 97514,47894
 97514,49086
 98205,49086
-98205,50305`
-
-const main = () => {
-    const data = input.split(('\n')).map((i) => i.split(',')).map((coord) => coord.map((num) => parseInt(num)));
-
-    let largestarea = 0;
-
-    for (let i = 0; i < data.length; i++) {
-        let x1 = data[i][0];
-        let y1 = data[i][1];
-
-        for (let j = 0; j < data.length; j++) {
-            let x2 = data[j][0];
-            let y2 = data[j][1];
-
-            let area = (Math.abs(x1 - x2) + 1) * (Math.abs(y1 - y2) + 1);
-            if (area > largestarea) {
-                largestarea = area;
-            }
-        }
-    }
-
-    console.log(largestarea);
-}
+98205,50305`;
 
 main();
